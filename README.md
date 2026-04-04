@@ -1,4 +1,4 @@
-<!-- wp:cover {"url":"https://BeckyBlu.github.io/BeckyTahaBlu.com/wp-content/uploads/2025/03/blackwhitegreentactilepsychedelicmusicportraitpsychedelicposter_20250311_173558_00007491896502432574039.jpg","id":12,"dimRatio":0,"minHeight":75,"minHeightUnit":"vh","contentPosition":"center center","isDark":false,"align":"full"} -->
+
 <div class="wp-block-cover alignfull is-light" style="min-height:75vh">
     <span aria-hidden="true" class="wp-block-cover__background has-background-dim-0 has-background-dim"></span>
     <img class="wp-block-cover__image-background wp-image-12" alt="" src="https://BeckyBlu.github.io/BeckyTahaBlu.com/wp-content/uploads/2025/03/blackwhitegreentactilepsychedelicmusicportraitpsychedelicposter_20250311_173558_00007491896502432574039.jpg" data-object-fit="cover"/>
