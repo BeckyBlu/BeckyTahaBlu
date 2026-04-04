@@ -5,95 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sessions — Becky Taha'Blu</title>
     <link rel="stylesheet" href="style.css" />
-    <style>
-      /* Age Verification Modal */
-      .age-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-      }
-      
-      .age-modal-content {
-        background: #1a1a1a;
-        border: 2px solid #7fd5ff;
-        padding: 30px;
-        border-radius: 8px;
-        text-align: center;
-        color: #fff;
-        max-width: 400px;
-      }
-      
-      .age-modal-content h2 {
-        color: #7fd5ff;
-        margin-top: 0;
-        font-size: 1.8rem;
-      }
-      
-      .age-modal-content p {
-        color: #ccc;
-        margin: 1rem 0;
-      }
-      
-      .age-modal button {
-        margin: 10px;
-        padding: 10px 20px;
-        cursor: pointer;
-        border: none;
-        border-radius: 4px;
-        font-weight: 600;
-        font-size: 1rem;
-        transition: all 0.3s;
-      }
-      
-      #age-confirm {
-        background: #7fd5ff;
-        color: #000;
-      }
-      
-      #age-confirm:hover {
-        background: #5fb8d4;
-      }
-      
-      #age-deny {
-        background: #333;
-        color: #fff;
-        border: 1px solid #555;
-      }
-      
-      #age-deny:hover {
-        background: #444;
-      }
-      
-      .page-hero {
-        position: relative;
-        width: 100%;
-        height: 300px;
-        overflow: hidden;
-      }
-      
-      .page-hero-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    </style>
   </head>
   <body>
-    <!-- Age Verification Modal -->
-    <div id="age-verification-modal" class="age-modal">
-      <div class="age-modal-content">
-        <h2>⚠️ Age Verification</h2>
-        <p>You must be 18+ to enter this site.</p>
-        <button id="age-confirm">I am 18 or older</button>
-        <button id="age-deny">Exit</button>
-      </div>
+    <!-- Age Gate Modal -->
+    <div id="ageGateModal" class="age-gate-modal">
+        <div class="age-gate-content">
+            <h2>⚠️ Age Verification</h2>
+            <p>This content is intended for adults only. You must be 18+ to enter.</p>
+            <form class="age-gate-form" id="ageGateForm">
+                <input type="date" id="birthDate" placeholder="YYYY-MM-DD" required />
+                <div id="ageGateError" class="age-gate-error"></div>
+                <div class="age-gate-buttons">
+                    <button type="submit" class="age-gate-btn age-gate-btn-accept">I'm 18+</button>
+                    <button type="button" class="age-gate-btn age-gate-btn-decline" id="declineBtn">Leave</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <header class="page-hero">
@@ -127,36 +54,5 @@
     </main>
 
     <script src="script.js" defer></script>
-    <script>
-      // Age Verification Logic
-      document.addEventListener("DOMContentLoaded", function() {
-        const ageModal = document.getElementById("age-verification-modal");
-        const confirmBtn = document.getElementById("age-confirm");
-        const denyBtn = document.getElementById("age-deny");
-        
-        // Check if user has already verified
-        if (localStorage.getItem("ageVerified") !== "true") {
-          ageModal.style.display = "flex";
-        } else {
-          ageModal.style.display = "none";
-        }
-        
-        // Confirm age
-        confirmBtn.addEventListener("click", function() {
-          localStorage.setItem("ageVerified", "true");
-          ageModal.style.display = "none";
-        });
-        
-        // Deny age - redirect
-        denyBtn.addEventListener("click", function() {
-          window.location.href = "https://google.com";
-        });
-
-        // Dark mode detection
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        }
-      });
-    </script>
   </body>
 </html>
