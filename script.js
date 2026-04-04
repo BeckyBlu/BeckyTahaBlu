@@ -11,6 +11,7 @@
 const AGE_REQUIREMENT = 18;                    // Minimum age required
 const STORAGE_KEY = 'ageVerified';            // localStorage key name
 const STORAGE_DURATION_DAYS = 30;             // How long to remember verification (0 = session only)
+const LOCK_CLASS = 'age-gate-lock';           // CSS class to enforce page lock
 
 // ============================================
 // AGE VERIFICATION LOGIC
@@ -22,43 +23,82 @@ function initAgeGate() {
   const birthDateInput = document.getElementById('birthDate');
   const errorDiv = document.getElementById('ageGateError');
   const declineBtn = document.getElementById('declineBtn');
-  
-  // Check if user has already verified their age
+
   if (isAgeVerified()) {
+    unlockPage();
     modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
     return;
   }
-  
-  // Show the age gate modal
+
+  lockPage();
   modal.classList.add('show');
-  
-  // Form submission
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-hidden', 'false');
+  setTimeout(() => birthDateInput.focus(), 0);
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const birthDate = new Date(birthDateInput.value);
-    
+
     if (isValidBirthDate(birthDate)) {
       const age = calculateAge(birthDate);
-      
+
       if (age >= AGE_REQUIREMENT) {
-        // Age verified - save and close modal
         markAgeVerified();
+        unlockPage();
         modal.classList.remove('show');
         errorDiv.textContent = '';
       } else {
-        // User is too young
         errorDiv.textContent = `You must be ${AGE_REQUIREMENT}+ to enter.`;
+        birthDateInput.focus();
       }
     } else {
       errorDiv.textContent = 'Please enter a valid date.';
+      birthDateInput.focus();
     }
   });
-  
-  // Decline button
+
   declineBtn.addEventListener('click', () => {
-    // Redirect to a safe page or show message
-    window.location.href = 'https://www.google.com';
+    errorDiv.textContent = 'Access denied. You must be 18+ to view this site.';
+    modal.querySelector('h2').textContent = 'Access Denied';
+    form.querySelector('.age-gate-buttons').style.display = 'none';
   });
+
+  modal.addEventListener('click', (event) => {
+    event.stopPropagation();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!isAgeVerified() && modal.classList.contains('show')) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+      }
+
+      if (event.key === 'Tab') {
+        const focusable = Array.from(modal.querySelectorAll('input, button'));
+        const currentIndex = focusable.indexOf(document.activeElement);
+        if (currentIndex === -1 || (event.shiftKey && currentIndex === 0)) {
+          event.preventDefault();
+          focusable[focusable.length - 1].focus();
+        } else if (!event.shiftKey && currentIndex === focusable.length - 1) {
+          event.preventDefault();
+          focusable[0].focus();
+        }
+      }
+    }
+  });
+}
+
+function lockPage() {
+  document.body.classList.add(LOCK_CLASS);
+  document.documentElement.style.overflow = 'hidden';
+}
+
+function unlockPage() {
+  document.body.classList.remove(LOCK_CLASS);
+  document.documentElement.style.overflow = '';
 }
 
 /**
@@ -112,22 +152,33 @@ function isValidBirthDate(date) {
  */
 function isAgeVerified() {
   const verified = localStorage.getItem(STORAGE_KEY);
-  
+
   if (!verified) {
     return false;
   }
-  
-  // Check if verification has expired
+
+  let data;
+  try {
+    data = JSON.parse(verified);
+  } catch (error) {
+    localStorage.removeItem(STORAGE_KEY);
+    return false;
+  }
+
+  if (!data || !data.verified) {
+    return false;
+  }
+
   if (STORAGE_DURATION_DAYS > 0) {
-    const storedTime = JSON.parse(verified).timestamp;
+    const storedTime = data.timestamp;
     const expirationTime = storedTime + (STORAGE_DURATION_DAYS * 24 * 60 * 60 * 1000);
-    
+
     if (Date.now() > expirationTime) {
       localStorage.removeItem(STORAGE_KEY);
       return false;
     }
   }
-  
+
   return true;
 }
 
