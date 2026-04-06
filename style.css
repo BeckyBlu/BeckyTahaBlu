@@ -185,8 +185,8 @@ header {
 }
 
 .page-hero-image {
-  width: 400px;
-  height: 400px;            /* fixed height for hero */
+  width: 100%;
+  height: 50%;            /* fixed height for hero */
   object-fit: center;        /* scales image and crops */
   object-position: center;  /* keeps center visible */
   border-radius: 12px;
