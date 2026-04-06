@@ -11,9 +11,7 @@
         </figure>
     </div>
 </div>
-<!-- /wp:cover -->
 
-<!-- wp:columns -->
 <div class="wp-block-columns">
     <div class="wp-block-column">
         <figure class="wp-block-image size-large">
@@ -49,27 +47,21 @@
         <p>~Voice Recording: $5 <br />~Video & Voice Recording: $10 <br />~Phone Consultation: $50+</p>
     </div>
 </div>
-<!-- /wp:columns -->
 
-<!-- wp:social-links -->
 <ul class="wp-block-social-links">
     <li><a href="https://cash.app/beckytahablu">$BeckyTahaBlu</a></li>
     <li><a href="https://www.amazon.com/hz/wishlist/ls/1C0C0CPOHARVQ?ref_=wl_share">Wishlist</a></li>
     <li><a href="https://fetlife.com/users/1606671">FetLife</a></li>
     <li><a href="https://www.niteflirt.com/users/BeckyTahaBlu">NiteFlirt</a></li>
 </ul>
-<!-- /wp:social-links -->
 
-<!-- wp:group -->
 <div class="wp-block-group">
     <h5 class="wp-block-heading">Connect with MizTrystBlu</h5>
     <figure class="wp-block-image size-large">
         <img src="https://BeckyBlu.github.io/BeckyTahaBlu.com/wp-content/uploads/2025/03/image-1.png?w=500" alt=""/>
     </figure>
 </div>
-<!-- /wp:group -->
 
-<!-- Contact Info -->
 <h5 class="wp-block-heading">Upcoming Public Events</h5>
 <p>Please call or email me at:</p>
 <figure class="wp-block-image size-large">
