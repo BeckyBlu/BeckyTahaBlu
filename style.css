@@ -176,14 +176,18 @@ header {
   }
 
 .page-hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 1.5rem auto 0;
+  padding: 0;
 }
 
 .page-hero-image {
-  object-fit: contain;
-  object-position: center;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
 }
 
 :root {
