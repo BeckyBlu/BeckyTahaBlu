@@ -178,7 +178,7 @@ header {
 .page-hero {
   width: 400px;
   max-width: 400px;
-  max-height: 200px;
+  max-height: 400px;
   margin: 1.5rem auto 0;
   padding: 0;
   overflow: hidden;         /* hides overflowing image edges */
@@ -186,7 +186,7 @@ header {
 
 .page-hero-image {
   width: 400px;
-  height: 200px;            /* fixed height for hero */
+  height: 400px;            /* fixed height for hero */
   object-fit: center;        /* scales image and crops */
   object-position: center;  /* keeps center visible */
   border-radius: 12px;
