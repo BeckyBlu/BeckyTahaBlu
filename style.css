@@ -182,6 +182,13 @@ header {
   height: 400px;
 }
 
+.page-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 :root {
   --primary-pink: #ff6bff;
   --dark-purple: #810947;
