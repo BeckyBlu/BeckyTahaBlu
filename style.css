@@ -185,7 +185,7 @@ header {
   min-height: 260px;
   overflow: hidden;
 }
-
+/* Hero image styles note center in the container */
 .page-hero-image {
   display: block;
   width: 100%;
