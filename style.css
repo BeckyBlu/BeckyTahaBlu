@@ -177,52 +177,33 @@ header {
     background: rgba(0, 255, 255, 0.1);
   }
 /* =========================
-   HERO SECTION (OPTIMIZED)
+   HERO SECTION (FIXED CROPPING)
    ========================= */
-
 .page-hero {
   width: 100%;
   max-width: 800px;
   margin: 1.5rem auto 0;
   padding: 0;
-
-  /* keeps layout stable */
-  display: block;
+  /* IMPORTANT: defines cropping area */
+  height: 350px;
+  overflow: hidden;
 }
-
 /* IMAGE HANDLING */
 .page-hero-image {
-  display: block;
   width: 100%;
-  height: auto;
-
-  /* modern responsive image behavior */
-  object-fit: cover;
-  object-position: center;
-
-  /* visual polish */
+  height: 100%;
+  object-fit: cover;         /* THIS enables cropping */
+  object-position: center;   /* keeps center focus */
+  display: block;
   border-radius: 12px;
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
 }
-
-/* MOBILE OPTIMIZATION */
 @media (max-width: 768px) {
   .page-hero {
+    height: 250px;
     max-width: 100%;
-    margin: 1rem auto 0;
-  }
-
-  .page-hero-image {
-    border-radius: 10px;
   }
 }
-
-@media (max-width: 480px) {
-  .page-hero {
-    margin: 0.75rem auto 0;
-  }
-}
-
 :root {
   --primary-pink: #ff6bff;
   --dark-purple: #810947;
