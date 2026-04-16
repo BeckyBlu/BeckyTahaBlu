@@ -67,4 +67,4 @@
 <figure class="wp-block-image size-large">
     <img src="https://BeckyBlu.github.io/BeckyTahaBlu.com/wp-content/uploads/2025/03/pro-emailsignature_20250311_172258_00004904854328373020688.jpg?w=1024" alt=""/>
 </figure>
-<p>Email: BeckyTahaBlu@outlook.com</p>
+<p>Email: beckytahablu@proton.me</p>
