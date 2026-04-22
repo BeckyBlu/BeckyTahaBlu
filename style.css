@@ -72,6 +72,7 @@
 
 html {
   color-scheme: light dark;
+  scroll-behavior: smooth;
 }
 
 /* Dark mode */
@@ -485,6 +486,17 @@ body.age-gate-lock {
 
 .contact-section {
   text-align: center;
+  border: 2px solid rgba(129, 9, 71, 0.28);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+#contact {
+  scroll-margin-top: 1rem;
+}
+
+html[data-theme="dark"] .contact-section {
+  background: rgba(30, 30, 60, 0.8);
+  border: 2px solid rgba(0, 255, 255, 0.3);
 }
 
 .contact-photo {
